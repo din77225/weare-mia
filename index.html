@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>M.I.A — Mina, Rina & Sori</title>
+  <meta name="description" content="M.I.A — AI International K-pop Group. Three girls, one sound, infinite energy. Debut single Shadow Games out now.">
+  <link rel="canonical" href="https://weare-mia.vercel.app/">
+
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="M.I.A — Mina, Rina & Sori">
+  <meta property="og:description" content="AI International K-pop Group. Debut single Shadow Games out now.">
+  <meta property="og:url"         content="https://weare-mia.vercel.app/">
+  <meta name="twitter:card"       content="summary_large_image">
+  <meta name="theme-color"        content="#0d0b14">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "M.I.A",
+    "description": "AI International K-pop Group — Mina, Rina & Sori",
+    "url": "https://weare-mia.vercel.app/",
+    "sameAs": ["https://www.instagram.com/weare.m.i.a/"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-page:   #0d0b14;
+      --bg-card:   #13101f;
+      --bg-subtle: #1c1729;
+      --purple:    #9b5de5;
+      --purple-lt: rgba(155,93,229,0.15);
+      --pink:      #f72585;
+      --pink-lt:   rgba(247,37,133,0.13);
+      --blue:      #4cc9f0;
+      --blue-lt:   rgba(76,201,240,0.12);
+      --text:      #f0ecff;
+      --text-mid:  #b8acd6;
+      --muted:     #6b618a;
+      --border:    rgba(255,255,255,0.07);
+      --border-md: rgba(255,255,255,0.13);
+      --r-sm: 10px;
+      --r-md: 16px;
+      --r-lg: 20px;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--bg-page);
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Neon ambient glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 35% at 15% 10%,  rgba(155,93,229,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 30% at 85% 80%, rgba(247,37,133,0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 25% at 80% 5%,  rgba(76,201,240,0.10) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Stars */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 42% 8%,  rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 88% 15%, rgba(255,255,255,0.25) 0%, transparent 100%),
+        radial-gradient(1px 1px at 5%  60%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 93% 55%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 55% 85%, rgba(255,255,255,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 92%, rgba(255,255,255,0.25) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── CARD WRAPPER ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0;
+    }
+
+    .card {
+      position: relative;
+      background: var(--bg-card);
+      width: 100%;
+      max-width: 460px;
+      min-height: 100vh;
+      padding: 52px 22px 72px;
+      box-shadow:
+        0 0 0 1px rgba(155,93,229,0.12),
+        0 4px 24px rgba(0,0,0,0.4),
+        0 24px 64px rgba(0,0,0,0.5);
+    }
+
+    @media (min-width: 520px) {
+      .page { padding: 48px 16px; align-items: flex-start; }
+      .card { min-height: auto; border-radius: 28px; }
+    }
+
+    /* ── SHARE BUTTON ── */
+    .share-btn {
+      position: absolute;
+      top: 18px; right: 18px;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      z-index: 10;
+    }
+    .share-btn:hover { background: var(--purple-lt); border-color: var(--purple); transform: scale(1.08); }
+    .share-btn:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+    .share-btn svg { width: 16px; height: 16px; stroke: var(--text-mid); }
+    .share-btn:hover svg { stroke: var(--purple); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--purple);
+      color: #fff;
+      font-size: 13px; font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 100px;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 999;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── PROFILE ── */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 36px;
+      animation: rise 0.55s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    /* Group avatar / logo area */
+    .avatar-wrap {
+      position: relative;
+      width: 96px; height: 96px;
+      margin-bottom: 16px;
+    }
+    .avatar-ring {
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--pink), var(--blue));
+      opacity: 0.75;
+      animation: spin-ring 6s linear infinite;
+    }
+    @keyframes spin-ring {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    .avatar-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-subtle);
+      border: 3px solid var(--bg-card);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
+    .avatar-fallback {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800; font-size: 22px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Members row */
+    .members-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .member-chip {
+      font-size: 11px; font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+    .chip-mina { color: #f9d923; border-color: rgba(249,217,35,0.3); background: rgba(249,217,35,0.08); }
+    .chip-rina { color: #c77dff; border-color: rgba(199,125,255,0.3); background: rgba(199,125,255,0.08); }
+    .chip-sori { color: #4cc9f0; border-color: rgba(76,201,240,0.3); background: rgba(76,201,240,0.08); }
+
+    .profile-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 800; font-size: 34px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #fff 30%, var(--purple) 70%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .profile-type {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .profile-bio {
+      font-size: 14px; font-weight: 300;
+      color: var(--text-mid);
+      max-width: 280px;
+      line-height: 1.65;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-head {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .section-label {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── FEATURED VIDEO CARD ── */
+    .video-section {
+      margin-bottom: 26px;
+      animation: rise 0.55s cubic-bezier(.22,1,.36,1) 0.08s both;
+    }
+
+    .feat-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3), 0 0 0 0 var(--pink);
+      transition: transform 0.28s cubic-bezier(.22,1,.36,1), box-shadow 0.28s ease, border-color 0.2s;
+    }
+    .feat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4), 0 0 24px rgba(247,37,133,0.2);
+      border-color: rgba(247,37,133,0.3);
+    }
+    .feat-card:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+
+    .feat-thumb {
+      position: relative;
+      width: 100%; aspect-ratio: 16/9;
+      background: var(--bg-subtle);
+      overflow: hidden;
+    }
+    .feat-thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform 0.35s cubic-bezier(.22,1,.36,1);
+    }
+    .feat-card:hover .feat-thumb img { transform: scale(1.03); }
+
+    /* Gradient overlay on thumb */
+    .feat-thumb::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,11,20,0.7) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .play-ring {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(247,37,133,0.9);
+      box-shadow: 0 0 20px rgba(247,37,133,0.5), 0 2px 10px rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 2;
+    }
+    .feat-card:hover .play-ring {
+      transform: translate(-50%,-50%) scale(1.1);
+      box-shadow: 0 0 32px rgba(247,37,133,0.7), 0 4px 16px rgba(0,0,0,0.4);
+    }
+    .play-ring svg { width: 20px; height: 20px; fill: #fff; margin-left: 3px; }
+
+    .debut-chip {
+      position: absolute; top: 11px; left: 11px; z-index: 2;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--pink);
+      color: #fff;
+      padding: 3px 9px; border-radius: 6px;
+      box-shadow: 0 0 12px rgba(247,37,133,0.5);
+    }
+
+    .feat-info { padding: 13px 15px 15px; }
+    .feat-eyebrow {
+      font-size: 10.5px; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--pink); margin-bottom: 4px;
+    }
+    .feat-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 17px; font-weight: 700; line-height: 1.3;
+      color: var(--text);
+    }
+    .feat-sub {
+      font-size: 12px; color: var(--muted); margin-top: 3px;
+    }
+
+    /* ── LINK CARDS ── */
+    .links-section {
+      margin-bottom: 28px;
+      animation: rise 0.55s cubic-bezier(.22,1,.36,1) 0.14s both;
+    }
+    .link-stack { display: flex; flex-direction: column; gap: 9px; }
+
+    .link-card {
+      display: flex; align-items: center; gap: 13px;
+      padding: 13px 14px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      text-decoration: none; color: var(--text); cursor: pointer;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      position: relative; overflow: hidden;
+      transition: transform 0.22s cubic-bezier(.22,1,.36,1), box-shadow 0.22s ease, border-color 0.2s;
+    }
+    .link-card::before {
+      content: '';
+      position: absolute; left: 0; top: 15%; bottom: 15%;
+      width: 3px; border-radius: 0 3px 3px 0;
+      background: var(--accent, var(--purple));
+      opacity: 0.6;
+      transition: opacity 0.2s, top 0.25s, bottom 0.25s;
+    }
+    .link-card:hover {
+      transform: translateX(3px) translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 16px var(--glow, rgba(155,93,229,0.15));
+      border-color: var(--border-md);
+    }
+    .link-card:hover::before { opacity: 1; top: 8%; bottom: 8%; }
+    .link-card:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+    .link-icon {
+      width: 42px; height: 42px; min-width: 42px; border-radius: 11px;
+      background: rgba(255,255,255,0.05);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .link-icon svg { width: 22px; height: 22px; }
+    .link-body { flex: 1; min-width: 0; }
+    .link-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700; font-size: 14.5px; line-height: 1.2;
+      margin-bottom: 1px;
+    }
+    .link-sub { font-size: 12px; color: var(--muted); font-weight: 300; }
+    .link-arrow { color: var(--muted); flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
+    .link-card:hover .link-arrow { transform: translateX(3px); color: var(--text-mid); }
+
+    /* Sponsor/collab CTA — special styling */
+    .sponsor-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 14px 20px;
+      background: transparent;
+      border: 1px solid rgba(155,93,229,0.4);
+      border-radius: var(--r-md);
+      text-decoration: none; color: var(--text); cursor: pointer;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700; font-size: 14.5px;
+      position: relative; overflow: hidden;
+      transition: transform 0.22s cubic-bezier(.22,1,.36,1), box-shadow 0.22s ease, border-color 0.2s, background 0.2s;
+    }
+    .sponsor-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(155,93,229,0.1), rgba(247,37,133,0.08));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .sponsor-btn:hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 24px rgba(155,93,229,0.25);
+      transform: translateY(-2px);
+    }
+    .sponsor-btn:hover::before { opacity: 1; }
+    .sponsor-btn:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+    .sponsor-btn svg { width: 18px; height: 18px; stroke: var(--purple); flex-shrink: 0; }
+    .sponsor-btn span { position: relative; }
+    .sponsor-sub {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300; font-size: 11px;
+      color: var(--muted);
+      display: block;
+    }
+
+    /* ── SOCIAL ICONS ROW ── */
+    .social-section {
+      animation: rise 0.55s cubic-bezier(.22,1,.36,1) 0.22s both;
+      margin-bottom: 36px;
+    }
+    .social-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .social-btn {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 16px rgba(247,37,133,0.2);
+      border-color: rgba(247,37,133,0.4);
+    }
+    .social-btn:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+    .social-btn svg { width: 20px; height: 20px; }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      animation: rise 0.55s cubic-bezier(.22,1,.36,1) 0.28s both;
+    }
+    .footer p { font-size: 11px; color: var(--muted); opacity: 0.45; }
+    .footer a { color: inherit; text-decoration: none; }
+    .footer a:hover { opacity: 0.8; }
+
+    /* ── ANIMATION ── */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 375px) {
+      .card { padding: 48px 16px 60px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .avatar-ring { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <main class="card" role="main">
+
+    <!-- Share button -->
+    <button class="share-btn" onclick="shareProfile()" aria-label="Share this page">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+      </svg>
+    </button>
+
+    <!-- Profile -->
+    <div class="profile">
+      <div class="avatar-wrap">
+        <div class="avatar-ring" aria-hidden="true"></div>
+        <div class="avatar-inner">
+          <img src="./avatar.jpg" alt="M.I.A"
+               onerror="this.style.display='none';document.getElementById('avatar-fb').style.display='flex'">
+          <span id="avatar-fb" class="avatar-fallback" style="display:none" aria-hidden="true">MIA</span>
+        </div>
+      </div>
+
+      <h1 class="profile-name">M.I.A</h1>
+      <p class="profile-type">AI International K-pop Group</p>
+
+      <div class="members-row" aria-label="Members">
+        <span class="member-chip chip-mina">Mina 💛</span>
+        <span class="member-chip chip-rina">Rina 🌙</span>
+        <span class="member-chip chip-sori">Sori 💙</span>
+      </div>
+
+      <p class="profile-bio">Born from code, but the dream is real.<br>Shadow meets sparkle.</p>
+    </div>
+
+    <!-- Debut MV -->
+    <section class="video-section" aria-label="Music video">
+      <div class="section-head">
+        <span class="section-label">Debut Single</span>
+        <div class="section-line" aria-hidden="true"></div>
+      </div>
+
+      <a class="feat-card"
+         href="https://www.youtube.com/watch?v=mv47PjYIExo"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Watch Shadow Games music video on YouTube">
+        <div class="feat-thumb">
+          <img src="https://i.ytimg.com/vi/mv47PjYIExo/maxresdefault.jpg"
+               alt="Shadow Games — M.I.A debut music video"
+               onerror="this.src='https://i.ytimg.com/vi/mv47PjYIExo/hqdefault.jpg'">
+          <div class="play-ring" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span class="debut-chip" aria-hidden="true">Out Now</span>
+        </div>
+        <div class="feat-info">
+          <p class="feat-eyebrow">Official Music Video</p>
+          <p class="feat-title">Shadow Games</p>
+          <p class="feat-sub">Halloween 2025 debut</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- Links -->
+    <section class="links-section" aria-label="Follow and connect">
+      <div class="section-head">
+        <span class="section-label">Find us</span>
+        <div class="section-line" aria-hidden="true"></div>
+      </div>
+      <div class="link-stack">
+
+        <!-- Instagram -->
+        <a class="link-card"
+           style="--accent:#f72585; --glow:rgba(247,37,133,0.15)"
+           href="https://www.instagram.com/weare.m.i.a/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Follow M.I.A on Instagram">
+          <div class="link-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig-mia)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <defs>
+                <linearGradient id="ig-mia" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#f09433"/>
+                  <stop offset="50%" stop-color="#dc2743"/>
+                  <stop offset="100%" stop-color="#bc1888"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5"/>
+            </svg>
+          </div>
+          <div class="link-body">
+            <p class="link-title">Instagram</p>
+            <p class="link-sub">@weare.m.i.a</p>
+          </div>
+          <svg class="link-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- YouTube -->
+        <a class="link-card"
+           style="--accent:#ff4e45; --glow:rgba(255,78,69,0.15)"
+           href="https://www.youtube.com/watch?v=mv47PjYIExo"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Watch Shadow Games on YouTube">
+          <div class="link-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="#ff4e45">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+          </div>
+          <div class="link-body">
+            <p class="link-title">Shadow Games</p>
+            <p class="link-sub">Watch the debut MV on YouTube</p>
+          </div>
+          <svg class="link-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Sponsor CTA -->
+    <section style="margin-bottom: 28px; animation: rise 0.55s cubic-bezier(.22,1,.36,1) 0.18s both;" aria-label="Collab and sponsorship">
+      <div class="section-head">
+        <span class="section-label">Work with us</span>
+        <div class="section-line" aria-hidden="true"></div>
+      </div>
+      <a class="sponsor-btn"
+         href="mailto:mia@miameow.ai?subject=M.I.A%20Collab"
+         aria-label="Email for collab inquiry">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span>Get in Touch</span>
+      </a>
+      <p style="text-align:center; margin-top:10px; font-size:12px; color:var(--muted);">For collabs, email <a href="mailto:mia@miameow.ai" style="color:var(--text-mid); text-decoration:none;">mia@miameow.ai</a></p>
+    </section>
+
+    <!-- Social icons -->
+    <section class="social-section" aria-label="Social media">
+      <div class="social-row">
+
+        <a class="social-btn"
+           href="https://www.instagram.com/weare.m.i.a/"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Instagram @weare.m.i.a">
+          <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig-icon)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <linearGradient id="ig-icon" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f09433"/>
+                <stop offset="50%" stop-color="#dc2743"/>
+                <stop offset="100%" stop-color="#bc1888"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="2.5"/>
+          </svg>
+        </a>
+
+        <a class="social-btn"
+           href="https://www.youtube.com/watch?v=mv47PjYIExo"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="YouTube — Shadow Games MV">
+          <svg viewBox="0 0 24 24" fill="#ff4e45">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> M.I.A &nbsp;·&nbsp; <a href="https://miameow.ai" target="_blank" rel="noopener noreferrer">Created by Mia Meow</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  async function shareProfile() {
+    const url  = window.location.href;
+    const data = { title: 'M.I.A — Shadow Games', url };
+    if (navigator.share && navigator.canShare?.(data)) {
+      try { await navigator.share(data); return; } catch {}
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      showToast('Link copied!');
+    } catch {
+      showToast(url);
+    }
+  }
+</script>
+
+</body>
+</html>
